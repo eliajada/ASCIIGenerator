@@ -6,9 +6,12 @@ checkEdit = False
 
 while checkProg:
         print("Welcome to the CPSC4100 Line Art Program!")
-        print("Type 1 to enter the line-art loop!")
-        print("Type 2 to enter the line-art editor!")
-        print("Type 3 to save your current keybind setup and overwrite the existing text file!")
+        print("Menu: ")
+        print("Type 1 to enter the line-art loop.")
+        print("Type 2 to enter the line-art editor.")
+        print("Type 3 to save your current keybind setup and overwrite the existing text file.")
+        print("Type 4 to reset the text files.")
+        print("Press ENTER to exit program.")
         choice = input("")
         i = 0
         p = 0
@@ -19,7 +22,7 @@ while checkProg:
             checkArt = True
         elif choice == "2":
             with open("asciiartW.txt", "w") as myfile:
-                boundLetter = input("Type in a letter to be bound to ART \n")
+                boundLetter = input("Type in a character to be bound to the ART \n")
                 myfile.write(boundLetter + "\n")
             checkEdit = True
 
@@ -42,16 +45,30 @@ while checkProg:
 
             print("Done!")
 
+        elif choice == "4":
+
+            cho4 = open("asciiartR.txt", "r")
+            datal = cho4.read()
+
+            with open("asciiart.txt", "w") as cho4o:
+                cho4o.write(datal)
+
+            with open("asciiartW.txt", "w") as cho4o2:
+                cho4o2.close();
+
+            print("Done!")
+            print("Text files are now reset.")
 
 
 
         elif choice == '':
             checkProg = False
+            print("Exiting program..")
             break
 
 
         while checkArt: #loop for text to ascii
-                userInput = input("Type in a word to turn into line-art. To exit print-loop press ENTER\n")
+                userInput = input("Type in words to turn into ASCII Art. To exit print-loop press ENTER\n")
                 lis = list(userInput)
                 lenG = len(userInput)
 
@@ -107,8 +124,8 @@ while checkProg:
                    w.write(newArt)
                    w.write("\n")
 
-            print("Your art: \n")
-            print(asciiW.read())
+           # print("Your art: \n")
+           # print(asciiW.read())
             checkEdit = False
 
             break
